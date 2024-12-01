@@ -1,103 +1,37 @@
 #include<stdio.h>
-#include<stdlib.h>
-int q[50],size;
-int rear=-1;
-int front=-1;
-int item,i;
-void enqueue();
-void dequeue();
-void display();
 int main()
 {
-printf("Enter the size of the array: ");
-scanf("%d",&size);
-printf("enter the array elements: ");
-for(i=0;i<size;i++)
+int i,a[30],front=0,rear=0,ch,item;
+do
 {
-scanf("%d",&q[i]);
-{
-printf("%d",q[i]);
-}
-}
-while(1)
-{
-int ch; 
-printf("Enter your choice:1.enqueue\n2.dequeue\n3.display\n4.exit");
+printf("\n enter the choice\n");
+printf("\n1.insertion\t 2.deletion\t 3.display\t4.exit\n");
 scanf("%d",&ch);
-switch(ch);
+switch(ch)
 {
-case1:enqueue();
-       break;
-case2:dequeue();
-       break;
-case3:display();
-       break;
-case4:exit(0);
-       break;
+case 1:printf("enter the elements");
+ scanf("%d",&item);
+ if(rear!=30)
+ {
+ a[rear]=item;
+ rear++;
+ }
+ if(rear==30)
+ printf("array is full");
+ break;
+
+case 2:if(front!=30)
+ front++;
+ if(front==30)
+ printf("Queue is empty");
+ break;
+case 3: for(i=front;i<rear;i++)
+ printf("%d\t",a[i]);
+ break;
+case 4: printf("exiting");
+ break;
+default:printf("wrong choice");
 }
+}while(ch!=4);
 return 0;
 }
-}
-void enqueue()
-{
-printf("enter the element to be inserted: ");
-scanf("%d",&item);
-if(rear==size-1)
-{
-printf("overflow");
-}
-else if((front==-1) && (rear==-1))
-{
-front=0;
-rear=0;
-q[rear]=item;
-}
-else
-{
-rear++;
-q[rear]=item;
-}
-}
-void dequeue()
-{
-if((front==-1) && (front>rear))
-{
-printf("underflow");
-}
-else if(front==rear)
-{
-printf("the deleted element is %d",q[front]);
-rear=-1;
-front=-1;
-}
-else
-{
-printf("the deleted element is %d",q[front]);
-front++;
-}
-}
-void display()
-{
-int i;
-if(front==rear==-1)
-{
-printf("underflow");
-}
-else
-{
-for(i=front;i<=rear;i++)
-{
-printf("%d",q[i]);
-}
-}
-}
-
-
-
-
-
-
-
-
-
-
